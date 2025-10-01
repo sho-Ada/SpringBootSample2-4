@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserListController {
 
 	/**ユーザー画面を一覧表示*/
-	@RequestMapping("/list")
+	@GetMapping("/list")
 	public String getUserList() {
 
 		//ユーザー一覧画面を表示
