@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+</head>
+
+<body>
+	<nav layout:fragment="header" class="navber navber-inverce navbar-fixed-top navber-dark bg-dark">
+		<div class="container-fluid">
+			<div class="navber-header">
+				<a class="navber-brand" href="#">SpringSample</a>
+			</div>
+			<form method="post" th:action="@{/logout}">
+				<button class="btn btn-link pull-right navber-brand" type="submit">
+					ログアウト
+				</button>
+			</form>
+		</div>
+	</nav>
+</body>
+
+</html>
