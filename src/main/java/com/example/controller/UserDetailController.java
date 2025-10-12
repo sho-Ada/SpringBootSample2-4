@@ -1,4 +1,4 @@
-
+ 			
 package com.example.controller;
 
 import org.modelmapper.ModelMapper;
@@ -55,7 +55,7 @@ public class UserDetailController {
 	}
 
 	/**ユーザー削除処理*/
-	@PostMapping(value = "/detail", params = "update")
+	@PostMapping(value = "/detail", params = "delete")
 	public String deleteUser(UserDetailForm form, Model model) {
 
 		//ユーザーを削除
