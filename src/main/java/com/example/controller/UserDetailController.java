@@ -1,4 +1,4 @@
-
+ 			
 package com.example.controller;
 
 import org.modelmapper.ModelMapper;
@@ -34,6 +34,7 @@ public class UserDetailController {
 
 		//MUserをformに登録
 		form = modelMapper.map(user, UserDetailForm.class);
+		form.setSalaryList(user.getSalaryList());
 
 		//Modelに登録
 		model.addAttribute("userDetailForm", form);
@@ -55,7 +56,7 @@ public class UserDetailController {
 	}
 
 	/**ユーザー削除処理*/
-	@PostMapping(value = "/detail", params = "update")
+	@PostMapping(value = "/detail", params = "delete")
 	public String deleteUser(UserDetailForm form, Model model) {
 
 		//ユーザーを削除
