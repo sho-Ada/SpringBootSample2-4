@@ -21,7 +21,7 @@
 	
 	<!-- マッピング定義（部署） -->
 	<resultMap type="com.example.domain.user.model.Department" id="department">
-	<id column="department_id" property="departmentName"/>
+	<id column="department_id" property="departmentId"/>
 	<result column="department_name" property="departmentName" />
 	</resultMap>
 	
@@ -115,5 +115,15 @@
 		where
 		user_id = #{userId}
 	</delete>
+	
+	<!-- ログインユーザー情報取得 -->
+	<select id="findLoginUser" resultType="MUser">
+	select
+	*
+	from
+	m_user
+	where
+	user_id = #{userId}
+	</select>
 
 </mapper>
