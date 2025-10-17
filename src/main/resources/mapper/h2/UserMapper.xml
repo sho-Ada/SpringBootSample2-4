@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
@@ -22,7 +21,7 @@
 	
 	<!-- マッピング定義（部署） -->
 	<resultMap type="com.example.domain.user.model.Department" id="department">
-	<id column="department_id" property="departmentName"/>
+	<id column="department_id" property="departmentId"/>
 	<result column="department_name" property="departmentName" />
 	</resultMap>
 	
