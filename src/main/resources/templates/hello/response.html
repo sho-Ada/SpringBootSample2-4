@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http;//www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<body>
-			<h1>HelloResponse</h1>
-			<p th:text="${sample}"></p>
-		</body>
+		<meta charset="UTF-8"></meta><!--UTF-8型を使用-->
+		<title>ResponseSample</title><!--タイトルのテキストを表示-->
 	</head>
+	<body>
+			<h1>HelloResponse</h1><!--テキストを表示-->
+			<p th:text="${sample}"></p><!--pタグは一段落開業する。th:text はTymeleafから提供される機能で、受け取ったsumpleに指定されているテキスト値がそのまま表示される-->
+		</body>
 </html>
