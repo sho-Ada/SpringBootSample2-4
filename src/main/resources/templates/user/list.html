@@ -5,18 +5,18 @@
 <head>
 	<title>ユーザー一覧</title><!--タイトル表示-->
 	<!-- 個別CSS読込 -->
-	<link rel="stylesheet" th:href="@{/css/user/list.css}"><!---->
+	<link rel="stylesheet" th:href="@{/css/user/list.css}"><!--linkは rel sytylesheetはHTMLの外部CSS読込タグ。th:hrefは-Tymeleaf式の静的リソース/css/user/list.cssのURLに解決される。-->
 </head>
 
 <body>
-	<div layout:fragment="content"><!---->
-		<div class="header border-bottom"><!---->
-			<h1 class="h2">ユーザー一覧画面</h1><!---->
+	<div layout:fragment="content"><!--tyhmereafのレイアウトを使用している-->
+		<div class="header border-bottom"><!--ユーティリティクラスのboder-bottomを使用-->
+			<h1 class="h2">ユーザー一覧画面</h1><!--h1の大きで「ユーザー一覧画面」を表示-->
 		</div>
 		<!-- 検索 -->
-		<div class="mb-4"><!---->
-			<form id="user-search-form" method="post" th:action="@{/user/list}" class="form-inline" th:object="${userListForm}"><!---->
-				<div class="form-group"><!---->
+		<div class="mb-4">
+			<form id="user-search-form" method="post" th:action="@{/user/list}" class="form-inline" th:object="${userListForm}"><!--フォーム開始。Postで/userlistに送信v。th:object/-->
+				<div class="form-group">
 					<label for="userId" class="mr-2">ユーザーID</label><!---->
 					<input type="text" class="form-control" th:field="*{userId}"/><!---->
 				</div>
@@ -30,14 +30,14 @@
 		<!-- 一覧表示 -->
 		<div>
 			<table class="table table-striped table-bordered table-hover"><!---->
-				<thead class="thead-light"><!---->
-					<tr><!---->
-						<th class="th-width">ユーザーID</th><!---->
-						<th class="th-width">ユーザー名</th><!---->
-						<th class="th-width">誕生日</th><!---->
-						<th class="th-width">年齢</th><!---->
-						<th class="th-width">性別</th><!---->
-						<th></th><!---->
+				<thead class="thead-light">
+					<tr>
+						<th class="th-width">ユーザーID</th>
+						<th class="th-width">ユーザー名</th>
+						<th class="th-width">誕生日</th>
+						<th class="th-width">年齢</th>
+						<th class="th-width">性別</th>
+						<th></th>
 					</tr><!---->
 				</thead>
 				<tbody>
