@@ -24,30 +24,28 @@ import com.example.form.SignupForm;
 
 import lombok.extern.slf4j.Slf4j;
 
-
-
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/user")// /userから始まるURLを使用しますよという意味、全ての先頭に/userがつく
 @Slf4j
 public class SignupController {
 	
-	@Autowired
-	private UserApplicationService userApplicationService;
+	@Autowired//DI
+	private UserApplicationService userApplicationService;//性別マスタを取得したり画面の共通ロジックをまとめたサービスを使う為のもの
 	
 	@Autowired
-	private UserService userService;
+	private UserService userService;//DB登録をしているクラス
 	
 	@Autowired
-	private ModelMapper modelMapper;
+	private ModelMapper modelMapper;//MUserの自動コピーする為のもの
 	/**ユーザー登録画面を表示*/
 	@GetMapping("/signup")
-	public String getSignup(Model model, @ModelAttribute SignupForm form) {
+	public String getSignup(Model model, @ModelAttribute SignupForm form) {//Model modelはHTMLに値を渡す為の入れ物
 		//性別を取得
-		Map<String, Integer> genderMap = userApplicationService.getGenderMap();
-		model.addAttribute("genderMap", genderMap);
+		Map<String, Integer> genderMap = userApplicationService.getGenderMap();//性別と値を取得
+		model.addAttribute("genderMap", genderMap);//取得したものをmodelに詰める。ここでHTMLから＄{genderMap}として参照できるようになる
 		
 		//ユーザー登録画面に遷移
-		return "user/signup";
+		return "user/signup";//user/signupというテキストを返す。（signup画面に戻る）
 	}
 	
 	/**ユーザー登録処理*/
@@ -69,7 +67,7 @@ public class SignupController {
 		userService.signup(user);
 		
 		//ログイン画面にリダイレクト
-		return "redirect:/login";
+		return "redirect:/login";//ログイン画面に戻る
 	}
 	
 	/**データベース関連の例外処理*/
