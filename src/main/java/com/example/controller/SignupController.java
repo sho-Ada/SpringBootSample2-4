@@ -41,7 +41,7 @@ public class SignupController {
 	@GetMapping("/signup")
 	public String getSignup(Model model, @ModelAttribute SignupForm form) {//Model modelはHTMLに値を渡す為の入れ物
 		//性別を取得
-		Map<String, Integer> genderMap = userApplicationService.getGenderMap();//性別と値を取得
+		Map<String, Integer> genderMap = userApplicationService.getGenderMap();//ApplicationServiceから性別と値を取得
 		model.addAttribute("genderMap", genderMap);//取得したものをmodelに詰める。ここでHTMLから＄{genderMap}として参照できるようになる
 		
 		//ユーザー登録画面に遷移
@@ -51,17 +51,19 @@ public class SignupController {
 	/**ユーザー登録処理*/
 	@PostMapping("/signup")
 	public String postSignup(Model model, @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
+		//Model modelは画面に表示する為の箱HTMLから参照できるようにするために作っている。@ModelAttribute SignupForm formでPOSTされた値をSpringがここへ詰める。@Validated(GroupOrder.class)は詰めた後に入力チェックを実行する。BindingResult bindingResultにエラー内容入る
 		
 		//入力チェック結果
-		if(bindingResult.hasErrors()) {
-			//NG：ユーザー登録画面に戻ります。
-			return getSignup(model, form);
+		if(bindingResult.hasErrors()) {//入力チェックでエラーが1つでもあるか？
+
+			return getSignup(model, form);//エラーがあったらユーザー登録画面に戻る。formを渡しているから入力画面に入力値が残りやすい。←なぜ？？
+			
 		}
 		
-		log.info(form.toString());
+		log.info(form.toString());//ログを残す
 		
 		//formをMUserクラスに変換
-		MUser user = modelMapper.map(form, MUser.class);
+		MUser user = modelMapper.map(form, MUser.class);//新しいMUserを作りsignupFormのコピーを作る。
 		
 		//ユーザー登録
 		userService.signup(user);
@@ -71,8 +73,8 @@ public class SignupController {
 	}
 	
 	/**データベース関連の例外処理*/
-	@ExceptionHandler(DataAccessException.class)
-	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
+	@ExceptionHandler(DataAccessException.class)//もしDataAccessExceptionが起きたらこのクラスで処理する。どこで起きたら拾ってくれる？？
+	public String dataAccessExceptionHandler(DataAccessException e, Model model) {//eは起きた例外
 		
 		//空文字をセット
 		model.addAttribute("error", "");
@@ -88,7 +90,7 @@ public class SignupController {
 	
 	/**その他の例外処理*/
 	@ExceptionHandler(Exception.class)
-	public String exceptionHandler(Exception e, Model model) {
+	public String exceptionHandler(Exception e, Model model) {//上に同じ
 		//空文字をセット
 		model.addAttribute("error", "");
 		

@@ -1,16 +1,16 @@
 .sidebar{
-	position: fixed;
-	display: block;
-	top: 58px;
-	bottom: 0;
-	left: 0;
+	position: fixed;/*画面（ブラウザの表示領域）に固定する。スクロールしてもこの要素は同じ位置に居続ける。*/
+	display: block;/*ブロック要素として表示する*/
+	top: 58px;/*上から５８pxの高さから下に固定*/
+	bottom: 0;/*下までピッタリに表示*/
+	left: 0;/*左までピッタリに表示*/
 }
 .main{
-	position: fixed;
-	display: block;
-	top: 58px;
-	bottom: 0;
-	padding-left: 20px;
-	overflow-y: auto;
-	height: calc(100vh - 58px);
+	position: fixed;/*画面（ブラウザの表示領域）に固定する。スクロールしてもこの要素は同じ位置に居続ける。*/
+	display: block;/**/
+	top: 58px;/*上から５８pxの高さから下に固定*/
+	bottom: 0;/*下までピッタリに表示*/
+	padding-left: 20px;/*左に２０pxの余白*/
+	overflow-y: auto;/*（y軸）縦方向に内容がはみ出したら、その要素内にスクロールバーを出す。*/
+	height: calc(100vh - 58px);/*画面の高さをヘッダーをのぞいた高さにしている*/
 }
