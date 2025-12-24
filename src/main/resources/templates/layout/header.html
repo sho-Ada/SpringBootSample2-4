@@ -6,13 +6,13 @@
 </head>
 
 <body>
-	<nav layout:fragment="header" class="navber navber-inverce navbar-fixed-top navber-dark bg-dark">
-		<div class="container-fluid">
-			<div class="navber-header">
-				<a class="navber-brand" href="#">SpringSample</a>
+	<nav layout:fragment="header" class="navbar navbar-inverce navbar-fixed-top navbar-dark bg-dark"><!--この <nav> 差し込み内容という意味。レイアウト側に「headerを差し込む場所」があれば、そこにこの内容が入る。-->
+		<div class="container-fluid"><!--横幅いっぱい-->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">SpringSample</a><!--ヘッダーの左側に表示-->
 			</div>
-			<form method="post" th:action="@{/logout}">
-				<button class="btn btn-link pull-right navber-brand" type="submit">
+			<form method="post" th:action="@{/logout}"><!--送信先はlogout-->
+				<button class="btn btn-link pull-right navbar-brand" type="submit"><!--送信ボタン（押すとログアウトする）。btn btn-linkはリンクっぽい見た目のボタン。pull-rightは右寄せ。-->
 					ログアウト
 				</button>
 			</form>

@@ -6,13 +6,13 @@
 </head>
 
 <body>
-	<div layout:fragment="menu" class="bg-light">
+	<div layout:fragment="menu" class="bg-light"><!--class="bg-light"は薄い背景色（Bootstrap）。-->
 		<ul class="nav nav-pills nav-stacked">
-			<li role="presentation">
-				<a class="nav-link" th:href="@{/user/list}">ユーザー一覧</a>
+			<li role="presentation"><!--roleは特に意味がないですよというもの。リストの項目としては扱われない。-->
+				<a class="nav-link" th:href="@{/user/list}">ユーザー一覧</a><!--user/listに飛ばすリンク文字-->
 			</li>
-			<li role="presentation" sec:authorize="hasRole('ADMIN')">
-				<a class="nav-link" th:href="@{'/admin'}">アドミン専用</a>
+			<li role="presentation" sec:authorize="hasRole('ADMIN')"><!--ユーザーがアドミン権限を持つかの確認-->
+				<a class="nav-link" th:href="@{'/admin'}">アドミン専用</a><!--アドミン専用画面にとばす-->
 			</li>
 		</ul>
 	</div>
