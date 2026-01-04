@@ -73,7 +73,7 @@ public class SignupController {
 	}
 	
 	/**データベース関連の例外処理*/
-	@ExceptionHandler(DataAccessException.class)//もしDataAccessExceptionが起きたらこのクラスで処理する。どこで起きたら拾ってくれる？？
+	@ExceptionHandler(DataAccessException.class)//もしDataAccessExceptionが起きたらこのクラスで処理する。
 	public String dataAccessExceptionHandler(DataAccessException e, Model model) {//eは起きた例外
 		
 		//空文字をセット
