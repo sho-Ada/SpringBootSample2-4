@@ -4,11 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@Configuration//Springの設定クラスという宣言
 public class JavaConfig {
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
+	@Bean//このメソッドが返すオブジェクトを、Beanとして登録するということ
+	public ModelMapper modelMapper() {//引数なし
+		return new ModelMapper();//ModelMapperのインスタンスを作って返す
 	}
 }

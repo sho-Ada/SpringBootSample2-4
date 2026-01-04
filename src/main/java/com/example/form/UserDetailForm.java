@@ -9,7 +9,7 @@ import com.example.domain.user.model.Salary;
 import lombok.Data;
 
 @Data
-public class UserDetailForm {
+public class UserDetailForm {//画面表示入力に合わせて使う箱
 private String userId;
 private String password;
 private String userName;
