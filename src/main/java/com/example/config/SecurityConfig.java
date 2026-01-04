@@ -22,8 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-				
+		return new BCryptPasswordEncoder();//パスワードをハッシュ化するエンコーダ-を返す。
 	}
 	
 	/**セキュリティの対象を設定*/
@@ -31,11 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	public void configure(WebSecurity web) throws Exception{
 		//セキュリティを適用しない
 		web
-		.ignoring()
-		.antMatchers("/webjars/**")
-		.antMatchers("/css/**")
-		.antMatchers("/js/**")
-		.antMatchers("/h2-console/**");
+		.ignoring()//ここで指定するパスは Spring Securityのフィルタ自体を通さない
+		.antMatchers("/webjars/**")//webjars配下は無視
+		.antMatchers("/css/**")//css配下は無視
+		.antMatchers("/js/**")//js配下は無視
+		.antMatchers("/h2-console/**");//h2-console配下は無視
 	}
 	
 	/**セキュリティの各種設定*/
@@ -62,10 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		//ログアウト処理
 		http
-		.logout()
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.logoutUrl("/logout")
-		.logoutSuccessUrl("/login?logout");
+		.logout()//ログアウト
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))// /logoutに来たらログアウト扱いにする判定。
+		.logoutUrl("/logout")//ログアウトのurl遷移先
+		.logoutSuccessUrl("/login?logout");//ログアウト後は「/login?logout」にとぶ。
 		
 		//CSRF対策を無効に設定（一時的）
 		//http.csrf().disable();
@@ -75,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		PasswordEncoder encoder = passwordEncoder();
+		PasswordEncoder encoder = passwordEncoder();//上の@Beanで作ったBCryptエンコーダを取得。
 		//インメモリ認証
 		/*
 		auth
@@ -90,9 +89,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		*/
 		
 		//ユーザーデータで認証
-		auth
-		.userDetailsService(userDetailsService)
-		.passwordEncoder(encoder);
+		auth//設定開始のあいず。
+		.userDetailsService(userDetailsService)//ユーザー情報はuserDetailsServiceから取得してくる。認証する。
+		.passwordEncoder(encoder);//パスワードがあっているかをBCryptで確認、照合する。
 	}
 	
 	
