@@ -4,10 +4,11 @@
 		<title>アドミン権限専用</title>
 	</head>
 	<body>
-		<div layout:fragment="content">
+		<div layout:fragment="content"><!--共通レイアウト側のlayout:fragment="content"の場所に差し込まれる-->
 			<div class="header border-bottom mt-2">
 				<h1 class="h2">アドミン権限専用画面</h1>
 			</div>
 		</div>
 	</body>
 </html>
+<!--/adminはROLE_ADMINの人しか見れない-->
