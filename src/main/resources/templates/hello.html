@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">//Thymeleafを使用するためのテンプレートみたいなもの
-	<head>
-		<meta charset="UTF-8"></meta>
-		<title>Hello World</title>
-	</head>
+<html xmlns:th="http://www.thymeleaf.org"><!--//Thymeleafを使用するためのテンプレートみたいなもの-->
+	<head><!--header開始-->
+		<meta charset="UTF-8"></meta><!--UTF-8を使用-->
+		<title>Hello World</title><!--テキストを挿入-->
+	</head><!--//header終了-->
+	
 	<body>
-		<h1>Hello World</h1>
-		<form method="post" action="/hello">
-			入力:<input type="text" name="text1"/>
-			<input type="submit" value="クリック"/>
+		<h1>Hello World</h1><!-- H1の大きさで表示されるテキスト-->
+		<form method="post" action="/hello"><!--＜form＞タグはユーザーがデータを入力して、サーバーに送信するための箱を作る役割。methodでPostメソッドを使用する事を指定。actionでフォーム送信先のURLを指定する-->
+			入力:<input type="text" name="text1"/><!--入力フィールドを作っている。typeではテキスト型に指定。nameではtext1という名前を付与している。-->
+			<input type="submit" value="クリック"/><!--submitタイプはボタンが押された時にフォームが送信される-->
 		</form>
 		<br/>
-		<form method="post" action="/hello/db">
-			従業員ID:<input type="text" name="text2" th:value="${text2_value}"/>
-			<input type="submit" value="クリック">
+		<form method="post" action="/hello/db"><!--Postメソッド型で送信され、URLは/hello/dbを指定される-->
+			従業員ID:<input type="text" name="text2" th:value="${text2_value}"/><!--テキスト型、text2という名前が付与。th:valueはThymeleafから提供される機能でテンプレートエンジンによりサーバーサイドでという変数が値に設定される-->
+			<input type="submit" value="クリック"><!--クリックと書いてあるボタン-->
 		</form>
 	</body>
 </html>

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8"></meta>
-		<title>HelloResponseSample</title>
-	</head>
-	<body>
-		<h1>HelloResponseDB</h1>
-		<table> 
-			<tr>
-				<td>ID:</td>
-				<td th:text="${employee.employeeId}"></td>
-			</tr>
-			<tr>
-				<td>名前:</td>
-				<td th:text="${employee.employeeName}"></td>
-			</tr>
-			<tr>
-				<td>年齢:</td>
-			<td th:text="${employee.employeeAge}"></td>
-			</tr>
+<html xmlns:th="http://www.thymeleaf.org"><!--開始タグ-->
+	<head><!--開始タグ-->
+		<meta charset="UTF-8"></meta><!--文字のエンコーディングをUTF-8にした-->
+		<title>HelloResponseSample</title><!--タイトル（テキスト入力）-->
+	</head><!--head開始-->
+	<body><!--body開始-->
+		<h1>HelloResponseDB</h1><!--テキスト入力欄大きさはh1-->
+		<table> <!--表（tableの開始）-->
+			<tr><!--表一行目-->
+				<td>ID:</td><!--そのセルの一行目-->
+				<td th:text="${employee.employeeId}"></td><!--二つ目のセルthymeleafのテキストタイプでempoyeeオブジェクトのenpoyeeIdプロパティを入力-->
+			</tr><!--一行目終了-->
+			<tr><!--二行目開始-->
+				<td>名前:</td><!--一つ目のセル-->
+				<td th:text="${employee.employeeName}"></td><!--二つ目のセルthymeleafのテキストタイプでempoyeeオブジェクトのenpoyeeNameプロパティを入力-->
+			</tr><!--二行目終了-->
+			<tr><!--三行目開始-->
+				<td>年齢:</td><!--三行目一つ目のセル-->
+			<td th:text="${employee.employeeAge}"></td><!--三行目二つ目のセルthymeleafのテキストタイプでempoyeeオブジェクトのenpoyeeAgeプロパティを入力-->
+			</tr><!--三行目終了-->
 		</table>
 	</body>
 </html>

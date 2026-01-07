@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS employee(
    name VARCHAR(50),
    age INT
 );
+/*従業員の基本管理Id、名前、年齢を指定。またVARCHAR（５０）は５０文字までの指定。*/
 /*ユーザーマスタ*/
  CREATE TABLE IF NOT EXISTS m_user
 (
@@ -15,6 +16,8 @@ CREATE TABLE IF NOT EXISTS employee(
    department_id INT,
    role VARCHAR(50)
 );
+/*従業員の基本管理Id、名前、パスワード、誕生日、年齢、性別、を指定。またVARCHAR（５０）は５０文字までの指定。*/
+
 /*部署マスタ*/ 
 CREATE TABLE IF NOT EXISTS m_department(
 department_id INT PRIMARY KEY,

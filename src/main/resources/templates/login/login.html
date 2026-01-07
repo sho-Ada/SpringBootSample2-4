@@ -2,35 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8"></meta>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!--画面の幅を揃えるためのもの「width=device-width」は画面幅に合わせる。「initial-scale=1」は最初の拡大率を決めるもの（一に合わせている）「shrink-to-fit=no」は幅を納めるために勝手に縮小しないようにするもの-->
 		<!-- CSS読込 -->
-		<link rel="stylesheat" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<link rel="stylesheat" th:href="@{/css/login/login.css}">
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{/css/login/login.css}"><!--自分で作ったログイン専用画面のCSSを取り込む-->
 		<!-- JS読込 -->
-		<script th:css="@{/webjars/jquery/jquery.min.js}" defer></script>
-		<script th:css="@{/webjars/bootstrap/bootstrap.min.js}" defer></script>
+		<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+		<script th:src="@{/webjars/bootstrap/bootstrap.min.js}" defer></script><!--jQueryを読み取る行-->
 		<title>ログイン</title>
 	</head>
 	<body class="bg-light">
 		<div class="text-center">
-			<form method="post" th:action="@{/login}" class="form-login">
+			<form method="post" th:action="@{/login}" class="form-login"><!--postメソッドで送信。送信先URLは/login。-->
 				<h2>ログイン</h2>
 				<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION'] != null}" 
 				th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" 
-				class="text-danger">ログインエラーメッセージ</p>
+				class="text-danger">ログインエラーメッセージ</p><!--ログインが失敗した時のみメッセー次を表示-->
 				<!-- ユーザーID -->
 				<div class="form-group">
-					<label for="password" class="sr-only">userId</label>
-					<input type="text" class="form-control" placeholder="ユーザーID" name="userId" />
+					<label for="userId" class="sr-only">userId</label><!--入力欄のラベル。-->
+					<input id="userId" type="text" class="form-control" placeholder="ユーザーID" name="userId" /><!--placeholderは薄文字にする。nameでパラメータ名を指定する-->
 				</div>
 				<!-- パスワード -->
 				<div class="form-group">
-					<label for="password" class="sr-only">password</label>
-					<input type="text" class="form-control" placeholder="パスワード" name="password" />
+					<label for="password" class="sr-only">password</label><!--パスワード入力のラベル-->
+					<input id="password"　type="text" class="form-control" placeholder="パスワード" name="password" /><!--パスワード入力欄-->
 				</div>
-				<input type="submit" value="ログイン" class="btn btn-primary" />
+				<input type="submit" value="ログイン" class="btn btn-primary" /><!--ログインって書いてある、ボタン。-->
 			</form>
-			<a th:href="@{/user/signup}">新規登録はこちらから</a>
+			<a th:href="@{/user/signup}">新規登録はこちらから</a><!--新規登録画面へとばす-->
 		</div>
 	</body>
 </html>
