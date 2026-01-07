@@ -1,4 +1,3 @@
- 			
 package com.example.controller;
 
 import org.modelmapper.ModelMapper;
@@ -22,19 +21,19 @@ public class UserDetailController {
 	private UserService userService;
 
 	@Autowired
-	private ModelMapper modelMapper;
+	private ModelMapper modelMapper;//MuserをuserDetailFormにコピーするために使うクラス
 
 	/**ユーザー詳細画面を表示*/
 	@GetMapping("/detail/{userId:.+}")
 	public String getUser(UserDetailForm form, Model model, @PathVariable("userId") String userId) {
 
 		//ユーザーを１件取得
-		MUser user = userService.getUserOne(userId);
-		user.setPassword(null);
+		MUser user = userService.getUserOne(userId);//userIdでDBからユーザーを1件取得する。
+		user.setPassword(null);//パスワードをnullにする。なぜ？？？？→フォームにハッシュが入らなくなる
 
 		//MUserをformに登録
-		form = modelMapper.map(user, UserDetailForm.class);
-		form.setSalaryList(user.getSalaryList());
+		form = modelMapper.map(user, UserDetailForm.class);//MUser userの内容をUserDetailFormにコピーしてformに入れる。
+		form.setSalaryList(user.getSalaryList());//リストをセットする
 
 		//Modelに登録
 		model.addAttribute("userDetailForm", form);
@@ -44,7 +43,7 @@ public class UserDetailController {
 	}
 
 	/**ユーザー更新処理*/
-	@PostMapping(value = "/detail", params = "update")
+	@PostMapping(value = "/detail", params = "update")// user/detailでPOSTメソッドである時、またupdateされる時に呼ばれる
 	public String updateUser(UserDetailForm form, Model model) {
 
 		//ユーザーを更新
@@ -56,7 +55,7 @@ public class UserDetailController {
 	}
 
 	/**ユーザー削除処理*/
-	@PostMapping(value = "/detail", params = "delete")
+	@PostMapping(value = "/detail", params = "delete")// user/detailでPOSTメソッドである時、またdeleteされる時に呼ばれる
 	public String deleteUser(UserDetailForm form, Model model) {
 
 		//ユーザーを削除

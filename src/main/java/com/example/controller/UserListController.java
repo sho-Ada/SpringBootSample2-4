@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.user.model.MUser;
@@ -30,36 +29,15 @@ public class UserListController {
 	public String getUserList(@ModelAttribute UserListForm form, Model model) {
 		
 		//formをMUserクラスに変換
-		MUser user = modelMapper.map(form, MUser.class);
+		MUser user = modelMapper.map(form, MUser.class);//新しいMUserを作りsignupFormのコピーを作る。
 		
 		//ユーザー検索
-		List<MUser> userList = userService.getUsers(user);
+		List<MUser> userList = userService.getUsers(user);//サービスに検索条件userを渡して、ユーザー一覧（検索結果）を取得する。
 		
 		//modelに登録
-		model.addAttribute("userList", userList);
+		model.addAttribute("userList", userList);//検索結果をModelに入れる。HTML側で ${userList} として一覧表示できるようになる。
 		
 		//ユーザー一覧画面を表示
 		return "user/list";
 	}
-	
-	/**ユーザー検索処理*/
-	@PostMapping("/list")
-	public String postUserList(@ModelAttribute UserListForm form, Model model) {
-		
-		//formをMUserクラスに変換
-		MUser user = modelMapper.map(form, MUser.class);
-		
-		//ユーザー検索
-		List<MUser> userList = userService.getUsers(user);
-		
-		//Modelに登録
-		model.addAttribute("userList", userList);
-		
-		//ユーザー一覧画面を表示
-		return "user/list";
-	}
-	
-	
-	
-	
 }

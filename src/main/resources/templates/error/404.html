@@ -5,10 +5,10 @@
 		<title>404Error</title>
 	</head>
 	<body>
-		<h1 th:text="${status} + '' + ${error}"></h1>
-		<p>これは、404エラ〜の専用ページです</p>
-		<form method="post" th:action="@{/logout}">
-			<button class="btn btn-link" type="submit">ログイン画面に戻る</button>
+		<h1 th:text="${status} + '' + ${error}"></h1><!--statusには４０４が入る-->
+		<p>これは、404エラーの専用ページです</p>
+		<form method="post" th:action="@{/logout}"><!--ログアウトさせてる-->
+			<button class="btn btn-link" type="submit">ログイン画面に戻る</button><!--ボタン設定-->
 		</form>
 	</body>
 </html>

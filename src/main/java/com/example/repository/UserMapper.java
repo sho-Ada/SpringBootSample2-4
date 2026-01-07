@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.example.domain.user.model.MUser;
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper {//mapperを通して使うやつをここに入れている宣言のクラス
 
 	/**ユーザー登録*/
 	public int insertOne(MUser user);

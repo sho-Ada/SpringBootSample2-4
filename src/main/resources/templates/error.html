@@ -5,11 +5,11 @@
 		<title>Error</title>
 	</head>
 	<body>
-		<h1 th:text="${status} + '' + ${error}"></h1>
-		<p th:text="${message}"></p>
+		<h1 th:text="${status} + '' + ${error}"></h1><!--statusには４０４や５０５などerrorにはエラー名が入る-->
+		<p th:text="${message}"></p><!--Controllerで設定してたmodel.addAttribute("message", "SignupControllerで例外が発生しました");の部分が呼び出される-->
 		<p>ログイン画面に戻ってください</p>
-		<form method="post" th:action="@{/logout}">
-			<button class="btn btn-link" type="submit">ログイン画面に戻る</button>
+		<form method="post" th:action="@{/logout}"><!--ログアウトさせてる-->
+			<button class="btn btn-link" type="submit">ログイン画面に戻る</button><!--ボタン設定-->
 		</form>
 	</body>
 </html>

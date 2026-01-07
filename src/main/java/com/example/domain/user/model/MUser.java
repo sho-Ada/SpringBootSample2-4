@@ -5,10 +5,10 @@ import java.util.List;
 
 import lombok.Data;
 
-@Data
+@Data//Lombokのアノテーション
 public class MUser {
-	private String userId;
-	private String password;
+	private String userId;//sqlに対応している。これはmuser.user_id
+	private String password;//
 	private String userName;
 	private Date birthday;
 	private Integer age;
@@ -16,5 +16,5 @@ public class MUser {
 	private Integer departmentId;
 	private String role;
 	private Department department;
-	private List<Salary> salaryList;
+	private List<Salary> salaryList;//これは給与の入れるデータが一ユーザーにつき複数データが入るため。
 }
